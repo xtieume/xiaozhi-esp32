@@ -27,7 +27,7 @@
 
 #define TAG "Spotpear_ESP32_S3_1_28_BOX"
 
-LV_FONT_DECLARE(font_puhui_16_4);
+LV_FONT_DECLARE(Noto);
 LV_FONT_DECLARE(font_awesome_16_4);
 
 
@@ -82,7 +82,7 @@ public:
                     bool swap_xy)
         : SpiLcdDisplay(io_handle, panel_handle, width, height, offset_x, offset_y, mirror_x, mirror_y, swap_xy,
                     {
-                        .text_font = &font_puhui_16_4,
+                        .text_font = &Noto,
                         .icon_font = &font_awesome_16_4,
                         .emoji_font = font_emoji_64_init(),
                     }) {
@@ -111,7 +111,7 @@ private:
         rtc_gpio_set_direction(GPIO_NUM_3, RTC_GPIO_MODE_OUTPUT_ONLY);
         rtc_gpio_set_level(GPIO_NUM_3, 1);
 
-        power_save_timer_ = new PowerSaveTimer(-1, 60, 290);
+        power_save_timer_ = new PowerSaveTimer(-1, 60, 31536000);
         power_save_timer_->OnEnterSleepMode([this]() {
             ESP_LOGI(TAG, "Enabling sleep mode");
             display_->SetChatMessage("system", "");

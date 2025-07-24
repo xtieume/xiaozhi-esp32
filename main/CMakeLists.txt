@@ -24,6 +24,7 @@ set(SOURCES "audio/audio_codec.cc"
             "settings.cc"
             "device_state_event.cc"
             "main.cc"
+            "main/../../Noto.c"
             )
 
 set(INCLUDE_DIRS "." "display" "audio" "protocols")
@@ -245,6 +246,8 @@ elseif(CONFIG_LANGUAGE_EN_US)
     set(LANG_DIR "en-US")
 elseif(CONFIG_LANGUAGE_JA_JP)
     set(LANG_DIR "ja-JP")
+elseif(CONFIG_LANGUAGE_VI_VN)
+    set(LANG_DIR "vi-VN")
 endif()
 
 # 定义生成路径
